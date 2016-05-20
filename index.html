@@ -21,12 +21,12 @@
       var link = document.createElement( 'link' );
       link.rel = 'stylesheet';
       link.type = 'text/css';
-      link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'bower_components/reveal.js/css/print/pdf.css' : 'bower_components/reveal.js/css/print/paper.css';
       document.getElementsByTagName( 'head' )[0].appendChild( link );
     </script>
 
     <!--[if lt IE 9]>
-    <script src="lib/js/html5shiv.js"></script>
+    <script src="bower_components/reveal.js/lib/js/html5shiv.js"></script>
     <![endif]-->
     
   </head>
@@ -45,6 +45,8 @@
             <small>
               <a href="http://jack-kelly.com">Jack Kelly</a><br/>
               jack.kelly@imperial.ac.uk<br/>
+              <br/>
+              (<em>Press right-arrow on your keyboard to change slides</em>)              
             </small>
           </p>
           </div>
@@ -363,9 +365,11 @@
           <span class="fragment"></span>          
         </section>
 
+        <!--
         <section>
           <h1 style="color: red;">"NILM<br/>IS<br/>DEAD"</h1>
         </section>
+        -->
 
         <section data-background="images/CTA-final.jpg">
           <h1 style="color: black;">Systematic reviews</h1>
@@ -837,6 +841,27 @@ Workshop</em>, Vancouver, Canada, 14-15 May 2016.</p>
     
     <!-- REVEAL INIT -->
     <script src="js/reveal-init.js"></script>
+    
+    <!-- Google Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      
+      ga('create', 'UA-29040208-6', 'auto');
+      ga('send', 'pageview');
+
+      // From https://github.com/hakimel/reveal.js/issues/211#issuecomment-60726240
+      Reveal.addEventListener("slidechanged",function(event){
+
+        ga('send', 'pageview', {
+          'page': event.indexh,
+          'title': document.title + ' : Slide ' + event.indexh
+        });
+
+      });
+    </script>
     
   </body>
 </html>
